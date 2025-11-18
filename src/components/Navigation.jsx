@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 
 const Navigation = ({ navigation, activeTab = 'Home' }) => {
@@ -30,61 +29,35 @@ const Navigation = ({ navigation, activeTab = 'Home' }) => {
   };
 
   return (
-    <View style={styles.navigation}>
+    <View className="flex-row justify-center gap-2.5 mt-5">
       <TouchableOpacity 
-        style={[styles.navButton, activeTab === 'Home' && styles.activeNavButton]}
+        className={`px-4 py-2 rounded-xl ${activeTab === 'Home' ? 'bg-blue-600' : ''}`}
         onPress={handleNavigateToHome}
       >
-        <Text style={activeTab === 'Home' ? styles.navTextActive : styles.navText}>
+        <Text className={`text-white text-base ${activeTab === 'Home' ? 'font-bold' : 'font-medium'}`}>
           Home
         </Text>
       </TouchableOpacity>
       
       <TouchableOpacity 
-        style={[styles.navButton, activeTab === 'Lessons' && styles.activeNavButton]} 
+        className={`px-4 py-2 rounded-xl ${activeTab === 'Lessons' ? 'bg-blue-600' : ''}`}
         onPress={handleNavigateToLessons}
       >
-        <Text style={activeTab === 'Lessons' ? styles.navTextActive : styles.navText}>
+        <Text className={`text-white text-base ${activeTab === 'Lessons' ? 'font-bold' : 'font-medium'}`}>
           Lessons
         </Text>
       </TouchableOpacity>
       
       <TouchableOpacity 
-        style={[styles.navButton, activeTab === 'Profile' && styles.activeNavButton]} 
+        className={`px-4 py-2 rounded-xl ${activeTab === 'Profile' ? 'bg-blue-600' : ''}`}
         onPress={handleNavigateToProfile}
       >
-        <Text style={activeTab === 'Profile' ? styles.navTextActive : styles.navText}>
+        <Text className={`text-white text-base ${activeTab === 'Profile' ? 'font-bold' : 'font-medium'}`}>
           Profile
         </Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  navigation: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 10,
-  },
-  navButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 10,
-  },
-  activeNavButton: {
-    backgroundColor: '#1d4ed8',
-  },
-  navText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  navTextActive: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
 
 export default Navigation;
